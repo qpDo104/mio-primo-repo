@@ -15,9 +15,21 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #f5f5f5;
   }
-}
+} 
+.ciao{ 
+  
+  background-color: white;   
+  border-radius: 12% 12% 12% 12%; 
+} 
+.button{ 
+  align-items: right;
+  background-color: #000000;   
+  border-radius: 12% 12% 12% 12%; 
+  position: absolute;
+
+} 
 
 body {
   background: var(--background);
