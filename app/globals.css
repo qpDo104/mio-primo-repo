@@ -95,3 +95,8 @@ body {
   width: 500px;
   height: 700px;
 }
+.foto:hover{
+    scale: 1.1;
+
+
+}

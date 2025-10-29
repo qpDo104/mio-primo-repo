@@ -9,7 +9,7 @@ export default function SplitButton() {
         <div className="scritta5"><a href="https://www.youtube.com/watch?v=6OcBjo30Tv4"><img src="/duo.png"></img>video più popolari</a></div>
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
         <div>
-        <Image 
+        <Image className="foto"
           src="/moon.jpg"
           alt="Next.js logo"
           width={2500}
@@ -27,7 +27,7 @@ export default function SplitButton() {
              uno dei titoli con cui ha cominciato la sua attività sulla piattaforma streaming.
                </p>
                <p>{"‎ "}</p>
-          <p>{"‎ "} </p>
+          <p>{"‎ "} </p> 
                </div>
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             To get started, edit the page.tsx file.

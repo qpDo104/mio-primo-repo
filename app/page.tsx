@@ -11,9 +11,9 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
+import Card from "./components/Card"; 
 
-
-function SplitButton() {
+function SplitButton() { 
   const router = useRouter();
 
   const options = [
@@ -25,10 +25,10 @@ function SplitButton() {
 
   const playerRoutes: { [key: string]: string } = {
     "Marco Galluzzo, as STALLION": "/data/stallion",
-    "Dario Ferracci, as MOONRYDE": "/data/moonryde",
+    "Dario Ferracci, as MOONRYDE": "/data/moonryde",  // corretto
     "Megan Garner, as MEGSOUNDSLIKEEGG": "/data/egg",
     "Ester Bjøru, as EASTAHH": "/data/eastahh",
-  };
+  }; 
 
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLDivElement | null>(null);
@@ -66,57 +66,57 @@ function SplitButton() {
 
   return (
     <>
-      <ButtonGroup
-        variant="contained"
-        ref={anchorRef}
-        aria-label="Button group with a nested menu"
-      >
-        <Button onClick={handleClick}>{options[selectedIndex]}</Button>
-        <Button
-          size="small"
-          aria-controls={open ? "split-button-menu" : undefined}
-          aria-expanded={open ? "true" : undefined}
-          aria-label="select merge strategy"
-          aria-haspopup="menu"
-          onClick={handleToggle}
+      <Card title="Menu Selection" description="Select a player" imageUrl="">
+        <ButtonGroup
+          variant="contained"
+          ref={anchorRef}
+          aria-label="Button group with a nested menu"
         >
-          
-        </Button>
-      </ButtonGroup>
-      <Popper
-        sx={{ zIndex: 1 }}
-        open={open}
-        anchorEl={anchorRef.current}
-        role={undefined}
-        transition
-        disablePortal
-      >
-        {({ TransitionProps, placement }) => (
-          <Grow
-            {...TransitionProps}
-            style={{
-              transformOrigin:
-                placement === "bottom" ? "center top" : "center bottom",
-            }}
-          >
-            <Paper>
-              <ClickAwayListener onClickAway={handleClose}>
-                <MenuList id="split-button-menu" autoFocusItem>
-                  {options.map((option, index) => (
-                    <MenuItem
-                      key={option}
-                      selected={index === selectedIndex}
-                      onClick={(event) => handleMenuItemClick(event, index)}
-                    >
-                      {option}
-                    </MenuItem>
-                  ))}
-                </MenuList>
-              </ClickAwayListener>
-            </Paper>
-          </Grow>
-        )}
-      </Popper>
+          <Button onClick={handleClick}>{options[selectedIndex]}</Button>
+          <Button
+            size="small"
+            aria-controls={open ? "split-button-menu" : undefined}
+            aria-expanded={open ? "true" : undefined}
+            aria-label="select merge strategy"
+            aria-haspopup="menu"
+            onClick={handleToggle}
+          />
+        </ButtonGroup>
+        <Popper
+          sx={{ zIndex: 1 }}
+          open={open}
+          anchorEl={anchorRef.current}
+          role={undefined}
+          transition
+          disablePortal
+        >
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{
+                transformOrigin:
+                  placement === "bottom" ? "center top" : "center bottom",
+              }}
+            >
+              <Paper>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList id="split-button-menu" autoFocusItem>
+                    {options.map((option, index) => (
+                      <MenuItem
+                        key={option}
+                        selected={index === selectedIndex}
+                        onClick={(event) => handleMenuItemClick(event, index)}
+                      >
+                        {option}
+                      </MenuItem>
+                    ))}
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
+      </Card>
     </>
   );
 }
@@ -125,38 +125,25 @@ function SplitButton() {
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans white dark:bg-black background-color #fff">
-      SCEGLI IL TUO GIOCATORE PREFERITO----{">"}
-      {/* <Autocomplete
-        disablePortal
-        options={top100Films}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="" className="ciao" />}
-      /> */}
-      {/* SplitButton inserito qui */}
-      <div style={{ marginTop: 20, marginBottom: 12, color:"#fff"}}>
-        <SplitButton />
-      </div>
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/pngegg.svg"
-          alt="Next.js logo"
-          width={750}
-          height={30}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            Ciao sono un apprendista è questa è la mia pagina di testo.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            sito esports più grande d'italia.
-            <br />
-            clicca qui sotto per iscriverti.
-            <br />
-            o per visitare il nostro forum.
-          </p>
+      <main className="flex flex-col items-center justify-center w-full">
+        <div className="flex flex-col gap-4">
+            <Card 
+                title="Card 1" 
+                description="Descrizione card 1" 
+                imageUrl="/path/to/image1.jpg" 
+            />
+            <Card 
+                title="Card 2" 
+                description="Descrizione card 2" 
+                imageUrl="/path/to/image2.jpg" 
+            />
+            <Card 
+                title="Card 3" 
+                description="Descrizione card 3" 
+                imageUrl="/path/to/image3.jpg" 
+            />
         </div>
+        
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
           <Link
             href="/text/login"
